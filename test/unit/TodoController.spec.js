@@ -67,4 +67,37 @@ describe('TodoController', function() {
             });
         });
     });
+
+    describe('retrieveLastNItems', function() {
+        describe('on success,', function() {
+            var todoList;
+            beforeEach(function() {
+                todoList = [1, 2, 3, 4, 5, 6, 7];
+                $httpBackend
+                    .expectGET('/todoRetrieve/7')
+                    .respond({
+                        todoList: todoList
+                    })
+            });
+            it('should update $scope.state.todoList', function() {
+                $scope.retrieveLastNItems(7);
+                $httpBackend.flush();
+                expect($scope.state.todoList).toEqual(todoList);
+            });
+        });
+        describe('on failure,', function() {
+            beforeEach(function() {
+                $httpBackend
+                    .expectGET('/todoRetrieve/15')
+                    .respond(500);
+            });
+            it('should display an error message', function() {
+                $scope.retrieveLastNItems(15);
+                $httpBackend.flush();
+                expect($scope.state.todoList).toEqual([]);
+                expect(windowAlert.calls.length).toBe(1);
+                expect(windowAlert.calls[0].args[0]).toBe('Retrieval failed');
+            });
+        });
+    });
 });
