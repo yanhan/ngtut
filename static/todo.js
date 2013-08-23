@@ -19,9 +19,10 @@ angular
         '$http',
         'windowAlert',
         function($scope, $http, windowAlert) {
+            $scope.RETRIEVE_DEFAULT_NR = 5;
             $scope.state = {};
             $scope.state.todoList = [];
-            $scope.RETRIEVE_DEFAULT_NR = 5;
+            $scope.state.retrieveNr = $scope.RETRIEVE_DEFAULT_NR;
 
             $scope.addItem = function() {
                 if (!$scope.state.newItem) {
@@ -32,7 +33,7 @@ angular
                             item: $scope.state.newItem
                         })
                         .success(function(data, status, headers, config) {
-                            $scope.retrieveLastNItems(5);
+                            $scope.retrieveLastNItems($scope.state.retrieveNr);
                         })
                         .error(function(data, status, headers, config) {
                         });
@@ -48,6 +49,11 @@ angular
                     .error(function(data, status, headers, config) {
                         windowAlert("Retrieval failed");
                     });
+            };
+
+            $scope.setAndRetrieveLastNItems = function(n) {
+                $scope.state.retrieveNr = n;
+                $scope.retrieveLastNItems($scope.state.retrieveNr);
             };
         }
     ]);

@@ -23,7 +23,7 @@ describe('TodoController', function() {
     it('initialization sets up the scope variables', function() {
         expect($scope.state).toEqual(jasmine.any(Object));
         expect($scope.state.todoList).toEqual([]);
-        expect($scope.RETRIEVE_DEFAULT_NR).toBe(5);
+        expect($scope.state.retrieveNr).toBe($scope.RETRIEVE_DEFAULT_NR);
     });
 
     describe('addItem', function() {
@@ -98,6 +98,20 @@ describe('TodoController', function() {
                 expect(windowAlert.calls.length).toBe(1);
                 expect(windowAlert.calls[0].args[0]).toBe('Retrieval failed');
             });
+        });
+    });
+
+    describe('setAndRetrieveLastNItems', function() {
+        beforeEach(function() {
+            $scope.retrieveLastNItems = jasmine.createSpy();
+        });
+        it('should set $scope.state.retrieveNr', function() {
+            $scope.setAndRetrieveLastNItems(23);
+            expect($scope.state.retrieveNr).toBe(23);
+            expect($scope.retrieveLastNItems.calls.length).toBe(1);
+            expect($scope.retrieveLastNItems.calls[0].args[0]).toBe(
+                $scope.state.retrieveNr
+            );
         });
     });
 });
