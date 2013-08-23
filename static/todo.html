@@ -1,1 +1,22 @@
-<h1>Hey there</h1>
+<div>
+  <h1>A simple todo list</h1>
+  <form method="POST" ng-submit="addItem()">
+    <fieldset>
+      <input type="text" placeholder="Add something" size=50 ng-model="state.newItem" />
+      <button class="btn btn-primary">Add item</button>
+    </fieldset>
+  </form>
+
+  <table class="table">
+    <thead>
+      <th>Number</th>
+      <th>Text</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in state.todoList">
+        <td>{{ $index + 1 }}</td>
+        <td>{{ item.text }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
