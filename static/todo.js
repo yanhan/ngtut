@@ -6,6 +6,10 @@ angular
                 templateUrl: '../static/todo.html',
                 controller: 'TodoController'
             })
+            .when('/secondPage', {
+                templateUrl: '../static/secondPage.html',
+                controller: 'SecondController'
+            })
             .otherwise({ redirectTo: '/' });
     }])
     .factory('windowAlert', [
@@ -23,6 +27,7 @@ angular
             $scope.state = {};
             $scope.state.todoList = [];
             $scope.state.retrieveNr = $scope.RETRIEVE_DEFAULT_NR;
+            $scope.state.pageName = 'todoList';
 
             $scope.addItem = function() {
                 if (!$scope.state.newItem) {
@@ -56,4 +61,32 @@ angular
                 $scope.retrieveLastNItems($scope.state.retrieveNr);
             };
         }
-    ]);
+    ])
+    .directive('navtabs', function() {
+        return {
+            restrict: 'E',
+            replace: true,
+            templateUrl: '../static/navtabs.html',
+            scope: {
+                pageName: '='
+            },
+            link: function(scope, element, attr) {
+                var liList = $(element).children('li');
+                liList.each(function(idx, liElem) {
+                    if ($(liElem).attr('data-name') === scope.pageName) {
+                        $(liElem).addClass('active');
+                    } else {
+                        $(liElem).removeClass('active');
+                    }
+                });
+            }
+        };
+    })
+    .controller('SecondController', [
+        '$scope',
+        function($scope) {
+            $scope.state = {};
+            $scope.state.pageName = 'secondPage';
+        }
+    ])
+    ;
