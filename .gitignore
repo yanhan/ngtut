@@ -1,0 +1,6 @@
+*~
+*.pyc
+*.swo
+*.swp
+db.db
+venv/
