@@ -43,8 +43,5 @@ angular
                         $window.alert("Retrieval failed");
                     });
             };
-
-            // retrieve some items in the list for a start
-            $scope.retrieveLastNItems($scope.RETRIEVE_DEFAULT_NR);
         }
     ]);
