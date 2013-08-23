@@ -8,18 +8,24 @@ angular
             })
             .otherwise({ redirectTo: '/' });
     }])
+    .factory('windowAlert', [
+        '$window',
+        function($window) {
+            return $window.alert;
+        }
+    ])
     .controller('TodoController', [
         '$scope',
         '$http',
-        '$window',
-        function($scope, $http, $window) {
+        'windowAlert',
+        function($scope, $http, windowAlert) {
             $scope.state = {};
             $scope.state.todoList = [];
             $scope.RETRIEVE_DEFAULT_NR = 5;
 
             $scope.addItem = function() {
                 if (!$scope.state.newItem) {
-                    $window.alert("text field must be non-empty")
+                    windowAlert("text field must be non-empty")
                 } else {
                     $http
                         .post('/todoAdd', {
@@ -40,7 +46,7 @@ angular
                         $scope.state.todoList = data.todoList;
                     })
                     .error(function(data, status, headers, config) {
-                        $window.alert("Retrieval failed");
+                        windowAlert("Retrieval failed");
                     });
             };
         }
