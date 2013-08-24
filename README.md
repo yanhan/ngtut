@@ -38,20 +38,6 @@ To run it:
 
     ./setup.sh
 
-In order to run the tests, you will need global installations of karma and
-phantomjs. (You don't actually need phantomjs, but you will have to edit the
-karma configuration file.)
-
-You will require root privileges for the following commands.
-
-To install karma 0.10.2,
-
-    npm install -g karma@0.10.2
-
-To install phantomjs 1.9.1,
-
-    npm install -g phantomjs@1.9.1
-
 ## Running the program
 
 First, run the setup script as outlined in the **Setting up** section above
@@ -89,7 +75,21 @@ To get out of the virtualenv, at the command line, run:
 
 ## Running Tests
 
-From the top of the repository, go into the test folder.
+In order to run the tests, you will need global installations of karma and
+phantomjs. (You don't actually need phantomjs, but you will have to edit the
+karma configuration file.)
+
+You will require root privileges for the following commands.
+
+To install karma 0.10.2,
+
+    npm install -g karma@0.10.2
+
+To install phantomjs 1.9.1,
+
+    npm install -g phantomjs@1.9.1
+
+To run the tests, go into the test folder.
 
     cd test
 
