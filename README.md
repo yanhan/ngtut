@@ -1,6 +1,7 @@
 # Angular.js tutorial
 
-This is an introductory tutorial to Angular.js. It features a simple todo list application.
+This is an introductory tutorial to Angular.js. It features a simple todo list
+application.
 
 What might possibly make this tutorial special are:
 
