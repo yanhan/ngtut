@@ -49,7 +49,11 @@ angular
                 $http
                     .get('/todoRetrieve/' + n)
                     .success(function(data, status, headers, config) {
-                        $scope.state.todoList = data.todoList;
+                        if (data.success) {
+                            $scope.state.todoList = data.todoList;
+                        } else {
+                            windowAlert('Retrieval failed');
+                        }
                     })
                     .error(function(data, status, headers, config) {
                         windowAlert("Retrieval failed");

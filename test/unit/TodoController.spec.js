@@ -76,10 +76,11 @@ describe('TodoController', function() {
                 $httpBackend
                     .expectGET('/todoRetrieve/7')
                     .respond({
+                        success: true,
                         todoList: todoList
                     })
             });
-            it('should update $scope.state.todoList', function() {
+            it('should update $scope.state.todoList on success', function() {
                 $scope.retrieveLastNItems(7);
                 $httpBackend.flush();
                 expect($scope.state.todoList).toEqual(todoList);
@@ -89,10 +90,27 @@ describe('TodoController', function() {
             beforeEach(function() {
                 $httpBackend
                     .expectGET('/todoRetrieve/15')
-                    .respond(500);
+                    .respond(200, {
+                        success: false,
+                        todoList: [1, 2, 3, 4]
+                    });
             });
             it('should display an error message', function() {
                 $scope.retrieveLastNItems(15);
+                $httpBackend.flush();
+                expect($scope.state.todoList).toEqual([]);
+                expect(windowAlert.calls.length).toBe(1);
+                expect(windowAlert.calls[0].args[0]).toBe('Retrieval failed');
+            });
+        });
+        describe('on server error,', function() {
+            beforeEach(function() {
+                $httpBackend
+                    .expectGET('/todoRetrieve/10')
+                    .respond(500);
+            });
+            it('should display an error message', function() {
+                $scope.retrieveLastNItems(10);
                 $httpBackend.flush();
                 expect($scope.state.todoList).toEqual([]);
                 expect(windowAlert.calls.length).toBe(1);
