@@ -5,7 +5,8 @@ This is an introductory tutorial to Angular.js. It features a simple todo list a
 What might possibly make this tutorial special are:
 
 - This is a "full stack" project. While emphasis is on front-end angular.js
-code, there is a simple, working backend written in Python.
+code, there is a simple, working backend written in Python (using the Flask
+framework).
 - Working unit tests are included. However, because node.js is still pre 1.0,
 the unit tests may not run properly for every version of node.js / karma.
 In light of this, I've listed down the versions of the various pieces of
