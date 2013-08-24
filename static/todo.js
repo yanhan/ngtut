@@ -31,7 +31,7 @@ angular
 
             $scope.addItem = function() {
                 if (!$scope.state.newItem) {
-                    windowAlert("text field must be non-empty")
+                    windowAlert("text field must be non-empty");
                 } else {
                     $http
                         .post('/todoAdd', {
