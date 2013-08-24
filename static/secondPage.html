@@ -1,2 +1,8 @@
 <navtabs page-name="state.pageName"></navtabs>
-<h1>This is the second page</h1>
+<div class="paddinglr10">
+  <h1>This is the second page</h1>
+  Enter something: <input type="text" ng-model="state.textbox" />
+  <div ng-show="state.textbox.length > 0">
+    <p>You just entered: {{ state.textbox }}</p>
+  </div>
+</div>
