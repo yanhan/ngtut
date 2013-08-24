@@ -45,25 +45,53 @@ describe('TodoController', function() {
             );
         });
         describe('add non-empty item', function() {
-            var itemToAdd = 'do my laundry';
+            var postUrl;
             beforeEach(function() {
-                $httpBackend
-                    .expectPOST('/todoAdd', {
-                        item: itemToAdd
-                    })
-                    .respond(200);
+                postUrl = '/todoAdd';
                 // mock out call to retrieveLastNItems
                 $scope.retrieveLastNItems = jasmine.createSpy();
             });
-            it('should succeed', function() {
-                $scope.state.newItem = itemToAdd;
-                $scope.addItem();
-                // $httpBackend.flush() required here
-                $httpBackend.flush();
-                expect($scope.retrieveLastNItems.calls.length).toBe(1);
-                expect($scope.retrieveLastNItems.calls[0].args[0]).toBe(
-                    $scope.RETRIEVE_DEFAULT_NR
-                );
+            describe('on success', function() {
+                var itemToAdd;
+                beforeEach(function() {
+                    itemToAdd = 'do my laundry';
+                    $httpBackend
+                        .expectPOST(postUrl, {
+                            item: itemToAdd
+                        })
+                        .respond(200, { success: true });
+                });
+                it('should call retrieveLastNItems', function() {
+                    $scope.state.newItem = itemToAdd;
+                    $scope.addItem();
+                    // $httpBackend.flush() required here
+                    $httpBackend.flush();
+                    expect($scope.retrieveLastNItems.calls.length).toBe(1);
+                    expect($scope.retrieveLastNItems.calls[0].args[0]).toBe(
+                        $scope.RETRIEVE_DEFAULT_NR
+                    );
+                });
+            });
+            describe('on failure', function() {
+                var itemToAdd;
+                beforeEach(function() {
+                    itemToAdd = 'another string';
+                    $httpBackend
+                        .expectPOST(postUrl, {
+                            item: itemToAdd
+                        })
+                        .respond(200, { success: false });
+                });
+                it('should not call retrieveLastNItems', function() {
+                    $scope.state.newItem = itemToAdd;
+                    $scope.addItem();
+                    $httpBackend.flush();
+                    expect($scope.retrieveLastNItems.calls.length).toBe(0);
+                    expect(windowAlert.calls.length).toBe(1);
+                    expect(windowAlert.calls[0].args[0]).toBe(
+                        'Adding of item failed'
+                    );
+                });
             });
         });
     });

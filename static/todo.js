@@ -38,7 +38,13 @@ angular
                             item: $scope.state.newItem
                         })
                         .success(function(data, status, headers, config) {
-                            $scope.retrieveLastNItems($scope.state.retrieveNr);
+                            if (data.success) {
+                                $scope.retrieveLastNItems(
+                                    $scope.state.retrieveNr
+                                );
+                            } else {
+                                windowAlert('Adding of item failed');
+                            }
                         })
                         .error(function(data, status, headers, config) {
                         });
