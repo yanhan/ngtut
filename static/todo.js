@@ -70,15 +70,31 @@ angular
             scope: {
                 pageName: '='
             },
-            link: function(scope, element, attr) {
-                var liList = $(element).children('li');
-                liList.each(function(idx, liElem) {
-                    if ($(liElem).attr('data-name') === scope.pageName) {
-                        $(liElem).addClass('active');
-                    } else {
-                        $(liElem).removeClass('active');
-                    }
-                });
+            controller: [
+                '$scope',
+                function($scope, $element, $attrs, $transclude) {
+                    this.selectTabIfOnPage = function(tab) {
+                        if (tab.name === $scope.pageName) {
+                            tab.selected = true;
+                        }
+                    };
+                }
+            ]
+        };
+    })
+    .directive('tab', function() {
+        return {
+            require: '^navtabs',
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            scope: {},
+            template: '<li ng-class="{ active: selected }"><a href="{{ href }}" ng-transclude></a></li>',
+            link: function(scope, element, attr, navtabsCtrl) {
+                scope.name = attr.name;
+                scope.href = attr.href;
+                scope.selected = false;
+                navtabsCtrl.selectTabIfOnPage(scope);
             }
         };
     })
