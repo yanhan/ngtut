@@ -50,6 +50,41 @@ To install phantomjs 1.9.1,
 
     npm install -g phantomjs@1.9.1
 
+## Running the program
+
+First, run the setup script as outlined in the **Setting up** section above
+in case you haven't.
+
+Then, source the venv folder created by the setup script. Take note that
+there is a **.** character (a period) right at the start:
+
+    . venv/bin/activate
+
+You should see a "(venv)" string beside your command prompt. This means that
+we are currently inside the virtualenv (the virtualenv is inside the `venv`
+folder). From now on, whenever you type `python` on the command prompt, you
+will be using the Python interpreter inside the `venv/bin` folder instead of
+the one installed globally on your system. The virtualenv also includes its
+own `pip` and installs python packages to the virtualenv instead of installing
+them globally.
+
+Next, run:
+
+    python todo.py
+
+This will start the server application. You can now go to http://127.0.0.1:5000
+to play around with it.
+
+
+## Stopping the program
+
+To stop, simply kill off the `python todo.py` using Ctrl-C.
+
+To get out of the virtualenv, at the command line, run:
+
+    deactivate
+
+
 ## Running Tests
 
 From the top of the repository, go into the test folder.
