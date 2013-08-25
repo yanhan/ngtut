@@ -82,7 +82,7 @@ angular
             },
             controller: [
                 '$scope',
-                function($scope, $element, $attrs, $transclude) {
+                function($scope) {
                     this.selectTabIfOnPage = function(tab) {
                         if (tab.name === $scope.pageName) {
                             tab.selected = true;
