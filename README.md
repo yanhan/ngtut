@@ -1,7 +1,7 @@
-# Angular.js tutorial
+# AngularJS tutorial
 
 This repository contains the accompanying code for an introductory tutorial
-to Angular.js that I've written at
+to AngularJS that I've written at
 
 [http://blog.pangyanhan.com/2013/08/27/ngtut][(http://blog.pangyanhan.com/2013/08/27/ngtut)]
 
