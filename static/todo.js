@@ -70,6 +70,9 @@ angular
                 $scope.state.retrieveNr = n;
                 $scope.retrieveLastNItems($scope.state.retrieveNr);
             };
+
+            // retrieve last 5 items
+            $scope.retrieveLastNItems(5);
         }
     ])
     .directive('navtabs', function() {

@@ -12,7 +12,14 @@ describe('TodoController', function() {
     beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
         $httpBackend = _$httpBackend_;
         $scope = $rootScope.$new();
+        $httpBackend
+            .expectGET('/todoRetrieve/5')
+            .respond({
+                success: true,
+                todoList: []
+            });
         ctrl = $controller('TodoController', { $scope: $scope });
+        $httpBackend.flush();
     }));
 
     afterEach(function() {
@@ -20,11 +27,14 @@ describe('TodoController', function() {
         $httpBackend.verifyNoOutstandingRequest();
     });
 
-    it('initialization sets up the scope variables', function() {
-        expect($scope.state).toEqual(jasmine.any(Object));
-        expect($scope.state.todoList).toEqual([]);
-        expect($scope.state.retrieveNr).toBe($scope.RETRIEVE_DEFAULT_NR);
+    describe('initialization', function() {
+        it('initialization sets up the scope variables', function() {
+            expect($scope.state).toEqual(jasmine.any(Object));
+            expect($scope.state.todoList).toEqual([]);
+            expect($scope.state.retrieveNr).toBe($scope.RETRIEVE_DEFAULT_NR);
+        });
     });
+
 
     describe('addItem', function() {
         var itemToAdd;
