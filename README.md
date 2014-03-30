@@ -13,9 +13,9 @@ http://blog.pangyanhan.com/2013/08/27/ngtut
 
 For running the unit tests, you will need:
 
-- node.js (**0.10.15** is the version tested with this code)
-- karma (**0.10.2** is the version tested with this code)
-- phantomjs (**1.9.1** is the version tested with this code)
+- node.js (**0.10.26** is the version tested with this code)
+- karma (**0.12.1** is the version tested with this code)
+- phantomjs (**1.9.7-1** is the version tested with this code)
 
 ## Setting up
 
@@ -72,19 +72,22 @@ karma configuration file.)
 
 You will require root privileges for the following commands.
 
-To install karma 0.10.2,
+### Install karma 0.12.1
 
-    npm install -g karma@0.10.2
+    sudo npm install -g karma@0.12.1
 
-To install phantomjs 1.9.1,
+Do note that the binary for Karma 0.12.1 is located at the
+`/usr/local/lib/node_modules/karma/bin` directory.
 
-    npm install -g phantomjs@1.9.1
+### Install phantomjs 1.9.7-1
+
+    sudo npm install -g phantomjs@1.9.7-1
 
 To run the tests from the repository root:
 
-    karma start test/test.conf.js
+    /usr/local/lib/node_modules/karma/bin/karma start test/test.conf.js
 
 To run the tests at the test folder:
 
     cd test
-    karma test.conf.js
+    /usr/local/lib/node_modules/karma/bin/karma start test.conf.js
