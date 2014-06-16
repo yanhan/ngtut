@@ -3,7 +3,7 @@
 This repository contains the accompanying code for an introductory tutorial
 to AngularJS that I've written at
 
-http://blog.pangyanhan.com/2013/08/27/ngtut
+http://blog.pangyanhan.com/posts/2013-08-27-ngtut.html
 
 ## System requirements
 
