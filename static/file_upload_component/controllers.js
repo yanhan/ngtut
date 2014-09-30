@@ -1,5 +1,5 @@
 angular
-    .module('TodoApp')
+    .module('MainApp')
     .controller('UploadController', [
         '$scope',
         'FileUploader',

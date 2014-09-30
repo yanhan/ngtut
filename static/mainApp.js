@@ -1,5 +1,5 @@
 angular
-    .module('TodoApp', ['angularFileUpload'])
+    .module('MainApp', ['angularFileUpload'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             //.when('/', {
@@ -10,8 +10,12 @@ angular
                 redirectTo: '/uploadPage'
             })
             .when('/uploadPage', {
-                templateUrl: '../static/uploadPage.html',
+                templateUrl: '../static/file_upload_component/uploadPage.html',
                 controller: 'UploadController'
+            })
+            .when('/todoPage', {
+                templateUrl: '../static/todo.html',
+                controller: 'TodoController'
             })
             .when('/secondPage', {
                 templateUrl: '../static/secondPage.html',

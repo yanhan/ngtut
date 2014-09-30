@@ -4,7 +4,7 @@ describe('TodoController', function() {
       , ctrl
       , windowAlert;
 
-    beforeEach(module('TodoApp', function($provide) {
+    beforeEach(module('MainApp', function($provide) {
         windowAlert = jasmine.createSpy();
         $provide.value('windowAlert', windowAlert);
     }));

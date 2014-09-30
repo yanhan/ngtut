@@ -1,5 +1,5 @@
 angular
-    .module('TodoApp')
+    .module('MainApp')
      /**
     * The ng-thumb directive
     */

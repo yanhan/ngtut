@@ -19,7 +19,7 @@ module.exports = function(config) {
       'test/lib/jquery-1.10.2.min.js',
       'test/lib/angular.min.js',
       'test/lib/angular-mocks.js',
-      'static/todo.js',
+      'static/mainApp.js',
       'test/**/*.spec.js'
     ],
 
