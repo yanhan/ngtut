@@ -2,9 +2,12 @@ angular
     .module('TodoApp', ['angularFileUpload'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
+            //.when('/', {
+            //    templateUrl: '../static/todo.html',
+            //    controller: 'TodoController'
+            //})
             .when('/', {
-                templateUrl: '../static/todo.html',
-                controller: 'TodoController'
+                redirectTo: '/uploadPage'
             })
             .when('/uploadPage', {
                 templateUrl: '../static/uploadPage.html',
@@ -14,7 +17,7 @@ angular
                 templateUrl: '../static/secondPage.html',
                 controller: 'SecondController'
             })
-            .otherwise({ redirectTo: '/' });
+            .otherwise({ redirectTo: '../static/uploadPage.html' });
     }])
     .factory('windowAlert', [
         '$window',

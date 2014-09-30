@@ -1,8 +1,13 @@
 angular
     .module('TodoApp')
-    .controller('UploadController', ['$scope', 'FileUploader', function($scope, FileUploader) {
+    .controller('UploadController', [
+        '$scope',
+        'FileUploader',
+        'windowAlert',
+        function($scope, FileUploader, windowAlert) {
+
         var uploader = $scope.uploader = new FileUploader({
-            url: 'upload.php'
+             url: 'upload.php'
         });
 
         // FILTERS
