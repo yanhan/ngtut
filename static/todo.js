@@ -1,5 +1,5 @@
 angular
-    .module('TodoApp', [])
+    .module('TodoApp', ['angularFileUpload'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/', {
@@ -112,13 +112,6 @@ angular
             }
         };
     })
-    .controller('UploadController', [
-        '$scope',
-        function($scope) {
-            $scope.state = {};
-            $scope.state.pageName = 'uploadPage';
-        }
-    ])
     .controller('SecondController', [
         '$scope',
         function($scope) {
@@ -126,4 +119,4 @@ angular
             $scope.state.pageName = 'secondPage';
         }
     ])
-    ;
+;
