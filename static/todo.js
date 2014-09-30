@@ -6,6 +6,10 @@ angular
                 templateUrl: '../static/todo.html',
                 controller: 'TodoController'
             })
+            .when('/uploadPage', {
+                templateUrl: '../static/uploadPage.html',
+                controller: 'UploadController'
+            })
             .when('/secondPage', {
                 templateUrl: '../static/secondPage.html',
                 controller: 'SecondController'
@@ -108,6 +112,13 @@ angular
             }
         };
     })
+    .controller('UploadController', [
+        '$scope',
+        function($scope) {
+            $scope.state = {};
+            $scope.state.pageName = 'uploadPage';
+        }
+    ])
     .controller('SecondController', [
         '$scope',
         function($scope) {

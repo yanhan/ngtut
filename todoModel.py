@@ -3,6 +3,7 @@ import os
 
 application_path = os.path.dirname(__file__)
 dbFilePath = os.path.join(application_path, 'db.db')
+print dbFilePath
 
 _conn = sqlite3.connect(dbFilePath, check_same_thread=False)
 _conn.row_factory = sqlite3.Row
