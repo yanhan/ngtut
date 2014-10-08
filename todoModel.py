@@ -1,6 +1,10 @@
 import sqlite3
+import os
 
-_conn = sqlite3.connect('db.db', check_same_thread=False)
+application_path = os.path.dirname(__file__)
+dbFilePath = os.path.join(application_path, 'db.db')
+
+_conn = sqlite3.connect(dbFilePath, check_same_thread=False)
 _conn.row_factory = sqlite3.Row
 _cursor = _conn.cursor()
 
