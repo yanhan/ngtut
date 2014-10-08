@@ -2,7 +2,7 @@ describe('SecondController', function() {
     var $scope
       , ctrl;
 
-    beforeEach(module('TodoApp'));
+    beforeEach(module('MainApp'));
 
     beforeEach(inject(function($rootScope, $controller) {
         $scope = $rootScope.$new();

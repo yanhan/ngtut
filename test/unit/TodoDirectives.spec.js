@@ -1,9 +1,9 @@
-describe('TodoApp directive', function() {
+describe('MainApp directive', function() {
     var $rootScope
       , $compile
       , $templateCache;
 
-    beforeEach(module('TodoApp'));
+    beforeEach(module('MainApp'));
 
     beforeEach(inject(function(_$rootScope_, _$compile_, _$templateCache_) {
         $rootScope = _$rootScope_;

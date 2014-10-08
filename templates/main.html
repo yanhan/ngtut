@@ -2,11 +2,20 @@
 
 {% block content %}
 
-<div ng-app="TodoApp">
+<div ng-app="MainApp">
   <div ng-view></div>
 </div>
 
-<script src="/static/todo.js">
-</script>
+
+<script src="/static/mainApp.js"></script>
+
+<!-- Angular File Upload Deps -->
+<script src="../static/file_upload_component/deps/angular-file-upload.js"></script>
+<link href="../static/file_upload_component/styles.css" rel="stylesheet">
+
+<!-- File Upload Component Impl Imports -->
+<script src="../static/file_upload_component/controllers.js"></script>
+<script src="../static/file_upload_component/directives.js"></script>
+
 
 {% endblock content %}
